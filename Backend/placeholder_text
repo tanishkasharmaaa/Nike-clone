@@ -1,9 +1,0 @@
-
-GOOGLE_CLIENT_ID=your_google_client_id_here
-GOOGLE_CLIENT_SECRET=your_google_client_secret_here
-GOOGLE_CALLBACK_URL=http://localhost:3000/auth/google/callback
-GOOGLE_CLOUD_API=your_google_cloud_api_key_here
-SESSION_SECRET=your_secure_session_secret_here
-CLIENT_URL=http://localhost:3000
-JWT_PRIVATE_KEY=your_jwt_private_key_here
-JWT_REFRESH_SECRET=your_jwt_refresh_secret_here
