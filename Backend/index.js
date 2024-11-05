@@ -11,9 +11,11 @@ const verifyToken = require('./utils/verifyToken');  // Import verifyToken middl
 const UserRouter = require('./routes/user.route');
 const CartRouter = require('./routes/cart.route');
 const OrderRouter = require('./routes/order.route');
+const port=process.env.PORT
+const session_secret=process.env.SESSION_SECRET
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = port || 5000;
 
 // Middleware Configuration
 app.use(cors({
@@ -25,7 +27,7 @@ app.use(express.json());
 // Session Configuration
 app.use(
     session({
-        secret: process.env.SESSION_SECRET,
+        secret: session_secret,
         resave: false,
         saveUninitialized: false,
         cookie: { secure: false }, // Set to `true` if using HTTPS in production
@@ -86,7 +88,7 @@ app.get('/logout', (req, res, next) => {
 app.listen(PORT, async () => {
     try {
         await connection;
-        console.log(`Server is running and connected to the database at port ${PORT}`);
+        console.log(`Server is running and connected to the database at port ${port}`);
     } catch (error) {
         console.error("Database connection failed:", error);
     }

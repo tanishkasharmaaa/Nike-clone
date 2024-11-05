@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
 const UserModel = require("../model/usermodel");
+require("dotenv").config()
+const jwt_private_key=process.env.JWT_PRIVATE_KEY;
 
 const verifyToken = async(req, res, next) => {
     // Extract the token from the Authorization header
@@ -12,7 +14,7 @@ const verifyToken = async(req, res, next) => {
 
     try {
         // Verify the token and extract the payload
-        const decoded = jwt.verify(token, process.env.JWT_PRIVATE_KEY, { algorithms: ['HS256'] });
+        const decoded = jwt.verify(token, jwt_private_key, { algorithms: ['HS256'] });
         const user=await UserModel.findOne({email:decoded.email,googleId:decoded.googleId})
         if(!user){
             res.status(401).json({message:"You are unauthorized to access this route"})
