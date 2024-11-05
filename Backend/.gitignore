@@ -1,2 +1,7 @@
-node_modules/
+# Ignore .env file with actual credentials
 .env
+
+# Node modules
+node_modules/
+
+
